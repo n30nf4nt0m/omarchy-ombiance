@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "io.github.phillipelwood1.ombiance",
+  "name": "Ombiance",
+  "version": "1.0.0",
+  "author": "phillipelwood1",
+  "description": "Looping ambient soundscapes for work, play, and sleep",
+  "kinds": [
+    "bar-widget"
+  ],
+  "entryPoints": {
+    "barWidget": "Panel.qml"
+  },
+  "barWidget": {
+    "displayName": "Ombiance",
+    "description": "Ambient background soundscapes",
+    "category": "Media",
+    "allowMultiple": false,
+    "defaultSection": "right",
+    "defaults": {
+      "volume": 70,
+      "mood": "all"
+    }
+  }
+}

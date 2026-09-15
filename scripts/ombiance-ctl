@@ -1,0 +1,131 @@
+#!/usr/bin/env bash
+# Ombiance playback control: a thin wrapper around a long-lived mpv instance
+# talking over its JSON IPC socket, so switching soundscapes doesn't require
+# tearing the player down (and losing volume/pause state) every time.
+set -euo pipefail
+
+RUNTIME_DIR="${XDG_RUNTIME_DIR:-/tmp}/ombiance"
+SOCK="$RUNTIME_DIR/mpv.sock"
+PIDFILE="$RUNTIME_DIR/mpv.pid"
+STATEFILE="$RUNTIME_DIR/category"
+mkdir -p "$RUNTIME_DIR"
+
+mpv_running() {
+  [[ -S "$SOCK" && -f "$PIDFILE" ]] && kill -0 "$(cat "$PIDFILE" 2>/dev/null)" 2>/dev/null
+}
+
+# Sends one JSON IPC command and prints whatever mpv replies with (one line
+# of JSON per request). -t bounds how long we wait for mpv to answer after
+# our side reaches EOF, so a stuck socket can't hang the caller.
+mpv_ipc() {
+  socat -t 2 - "UNIX-CONNECT:$SOCK" <<<"$1" 2>/dev/null || true
+}
+
+cmd_play() {
+  local category="${1:?category required}" file="${2:?file required}" volume="${3:-70}"
+
+  if [[ ! -f "$file" ]]; then
+    echo "ombiance-ctl: no such sound file: $file" >&2
+    exit 1
+  fi
+
+  if mpv_running; then
+    mpv_ipc "{\"command\":[\"loadfile\",\"$file\",\"replace\"]}" >/dev/null
+    mpv_ipc "{\"command\":[\"set_property\",\"pause\",false]}" >/dev/null
+    mpv_ipc "{\"command\":[\"set_property\",\"volume\",$volume]}" >/dev/null
+  else
+    rm -f "$SOCK"
+    mpv --no-video --loop-file=inf --volume="$volume" --idle=yes \
+      --input-ipc-server="$SOCK" --really-quiet "$file" >/dev/null 2>&1 &
+    disown
+    echo $! >"$PIDFILE"
+    for _ in $(seq 1 40); do
+      [[ -S "$SOCK" ]] && break
+      sleep 0.05
+    done
+  fi
+
+  printf '%s' "$category" >"$STATEFILE"
+}
+
+cmd_stop() {
+  if mpv_running; then
+    mpv_ipc '{"command":["quit"]}' >/dev/null
+  fi
+  rm -f "$SOCK" "$PIDFILE" "$STATEFILE"
+}
+
+cmd_toggle_pause() {
+  mpv_running || exit 0
+  local current
+  current=$(mpv_ipc '{"command":["get_property","pause"]}' | extract_data false)
+  if [[ "$current" == "True" ]]; then
+    mpv_ipc '{"command":["set_property","pause",false]}' >/dev/null
+  else
+    mpv_ipc '{"command":["set_property","pause",true]}' >/dev/null
+  fi
+}
+
+cmd_volume() {
+  local volume="${1:?volume required}"
+  mpv_running || exit 0
+  mpv_ipc "{\"command\":[\"set_property\",\"volume\",$volume]}" >/dev/null
+}
+
+# Reads newline-delimited JSON IPC replies on stdin and prints the "data"
+# field of the first one that has it, or the given default.
+extract_data() {
+  # -c (not "-" with a heredoc) keeps stdin free for the piped mpv reply --
+  # `python3 - <<PY` would read the program itself from stdin and leave
+  # nothing for sys.stdin to see.
+  python3 -c '
+import json, sys
+default = sys.argv[1]
+for line in sys.stdin:
+    line = line.strip()
+    if not line:
+        continue
+    try:
+        obj = json.loads(line)
+    except ValueError:
+        continue
+    if "data" in obj:
+        print(obj["data"])
+        break
+else:
+    print(default)
+' "$1"
+}
+
+cmd_status() {
+  if ! mpv_running; then
+    echo '{"playing":false,"paused":false,"category":"","volume":70}'
+    exit 0
+  fi
+  local paused volume category
+  paused=$(mpv_ipc '{"command":["get_property","pause"]}' | extract_data False)
+  volume=$(mpv_ipc '{"command":["get_property","volume"]}' | extract_data 70)
+  category=$(cat "$STATEFILE" 2>/dev/null || echo "")
+  python3 - "$paused" "$volume" "$category" <<'PY'
+import json, sys
+paused = sys.argv[1] == "True"
+try:
+    volume = round(float(sys.argv[2]))
+except ValueError:
+    volume = 70
+category = sys.argv[3]
+print(json.dumps({"playing": True, "paused": paused, "category": category, "volume": volume}))
+PY
+}
+
+case "${1:-}" in
+  play) shift; cmd_play "$@" ;;
+  stop) cmd_stop ;;
+  toggle-pause) cmd_toggle_pause ;;
+  volume) shift; cmd_volume "$@" ;;
+  status) cmd_status ;;
+  *)
+    echo "usage: ombiance-ctl {play <category> <file> [volume]|stop|toggle-pause|volume <0-100>|status}" >&2
+    exit 1
+    ;;
+esac
