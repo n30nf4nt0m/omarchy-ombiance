@@ -17,17 +17,25 @@ All three ship on a stock Omarchy install.
 ## Install
 
 ```bash
-ln -s /home/f4nt0m/Work/omarchy-ombiance ~/.config/omarchy/plugins/io.github.phillipelwood1.ombiance
-omarchy-shell shell rescanPlugins
-omarchy plugin enable io.github.phillipelwood1.ombiance
+omarchy plugin add https://github.com/n30nf4nt0m/omarchy-ombiance.git --enable
 ```
 
 The plugin lands in the right section of the bar. Moving it is the usual
 `omarchy bar move io.github.phillipelwood1.ombiance --section <left|center|right>`.
 
-Because it's a symlink back into this dev checkout, editing the QML here and
-saving hot-reloads it in the running shell (`~/.config/omarchy/plugins/`
-watches for changes) — no reinstall step needed.
+### Developing locally
+
+If you're working on this repo directly instead of installing the git clone:
+
+```bash
+ln -s /path/to/omarchy-ombiance ~/.config/omarchy/plugins/io.github.phillipelwood1.ombiance
+omarchy-shell shell rescanPlugins
+omarchy plugin enable io.github.phillipelwood1.ombiance
+```
+
+Because it's a symlink back into your checkout, editing the QML and saving
+hot-reloads it in the running shell (`~/.config/omarchy/plugins/` watches
+for changes) — no reinstall step needed.
 
 ## Using it
 
