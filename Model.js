@@ -14,7 +14,12 @@ var soundscapes = [
   { id: "thunderstorm", label: "Thunderstorm", icon: "⛈️", moods: ["sleep", "play"] },
   { id: "library", label: "Library", icon: "📚", moods: ["work"] },
   { id: "train", label: "Train", icon: "🚆", moods: ["work", "play"] },
-  { id: "birdsong", label: "Birdsong", icon: "🐦", moods: ["work", "play"] }
+  { id: "birdsong", label: "Birdsong", icon: "🐦", moods: ["work", "play"] },
+  { id: "crickets", label: "Crickets", icon: "🦗", moods: ["sleep", "play"] },
+  { id: "snowfall", label: "Snowfall", icon: "❄️", moods: ["sleep", "play"] },
+  { id: "airport", label: "Airport", icon: "✈️", moods: ["work", "play"] },
+  { id: "city-street", label: "City Street", icon: "🏙️", moods: ["work", "play"] },
+  { id: "wind-chimes", label: "Wind Chimes", icon: "🎐", moods: ["play", "sleep"] }
 ]
 
 var moods = [

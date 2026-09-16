@@ -20,6 +20,11 @@ record.
 | library | `library.ogg` | [Quiet library ambience](https://freesound.org/people/xkeril/sounds/620683/) | xkeril | CC0 1.0 | 9:40 |
 | train | `train.ogg` | [Train Journey on inside.wav](https://freesound.org/people/Walter_Odington/sounds/26274/) | Walter_Odington | CC0 1.0 | 4:10 |
 | birdsong | `birdsong.ogg` | [Birds in the Morning](https://freesound.org/people/myrinvp/sounds/472708/) | myrinvp | CC0 1.0 | 2:17 |
+| crickets | `crickets.ogg` | [Night Crickets Ambience on Rural Property](https://freesound.org/people/OwlStorm/sounds/320145/) | OwlStorm | CC0 1.0 | 1:22 |
+| snowfall | `snowfall.ogg` | [Snow falling in the city](https://freesound.org/people/xkeril/sounds/610317/) | xkeril | CC0 1.0 | 1:34 |
+| airport | `airport.ogg` | [Kuala Lumpur Airport ambience, Terminal P6](https://freesound.org/people/gladkiy/sounds/333227/) | gladkiy | CC0 1.0 | 6:36 |
+| city-street | `city-street.ogg` | [AMBTown People walking on a stone paved street in the city, Karlskrona, Sweden](https://freesound.org/people/vhio/sounds/776524/) | vhio | CC0 1.0 | 7:14 |
+| wind-chimes | `wind-chimes.ogg` | [Wind Chimes on a Windy Day](https://freesound.org/people/naturenotesuk/sounds/463706/) | naturenotesuk | CC0 1.0 | 6:28 |
 
 ## Notes
 
@@ -39,3 +44,11 @@ record.
   captured at 4:30 AM; chosen because it reads as clearly daytime/morning
   birdsong (no owls, crickets, or other nocturnal ambience) to complement
   the existing `forest-night` category rather than duplicate it.
+- `airport.ogg`: a recording of general terminal ambience (crowd murmur,
+  distant PA chatter, footsteps) was chosen over clips whose titles flagged
+  clear, repeating spoken announcements, since those would stand out badly
+  once the file loops.
+- `city-street.ogg`: a longer footsteps-and-crowd street recording was
+  chosen over a shorter literally-titled "daytime city street" clip (0:31)
+  for the same reason `highway.ogg` favored duration over an exact title
+  match — it loops far less noticeably.

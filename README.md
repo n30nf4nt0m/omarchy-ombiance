@@ -3,8 +3,9 @@
 A bar-widget plugin for the [Omarchy](https://omarchy.org/) shell that plays
 looping ambient background soundscapes — waves, a coffee shop, a restaurant,
 a rainy Tokyo night street, a fireplace, highway traffic, a nighttime
-forest, rain, a thunderstorm, a quiet library, a train journey, and morning
-birdsong — for work, play, or sleep.
+forest, rain, a thunderstorm, a quiet library, a train journey, morning
+birdsong, crickets, snowfall, an airport terminal, a city street, and wind
+chimes — for work, play, or sleep.
 
 ## Dependencies
 
