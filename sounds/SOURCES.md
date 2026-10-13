@@ -25,6 +25,13 @@ record.
 | airport | `airport.ogg` | [Kuala Lumpur Airport ambience, Terminal P6](https://freesound.org/people/gladkiy/sounds/333227/) | gladkiy | CC0 1.0 | 6:36 |
 | city-street | `city-street.ogg` | [AMBTown People walking on a stone paved street in the city, Karlskrona, Sweden](https://freesound.org/people/vhio/sounds/776524/) | vhio | CC0 1.0 | 7:14 |
 | wind-chimes | `wind-chimes.ogg` | [Wind Chimes on a Windy Day](https://freesound.org/people/naturenotesuk/sounds/463706/) | naturenotesuk | CC0 1.0 | 6:28 |
+| windy-day | `windy-day.ogg` | [Windy Forest (without windscreen) 02](https://freesound.org/people/Gutek/sounds/201897/) | Gutek | CC0 1.0 | 2:38 |
+| subway-station | `subway-station.ogg` | [Underground Station in Germany](https://freesound.org/people/florianreichelt/sounds/451721/) | florianreichelt | CC0 1.0 | 2:54 |
+| arcade | `arcade.ogg` | [Pinball Arcade Ambience](https://freesound.org/people/Ev-Dawg/sounds/435514/) | Ev-Dawg | CC0 1.0 | 5:54 |
+| brook | `brook.ogg` | [River in Icelandic nature (ambience, 5 minutes)](https://freesound.org/people/askeseverin/sounds/376202/) | askeseverin | CC0 1.0 | 5:56 |
+| cat-purr | `cat-purr.ogg` | [Cat Purring](https://freesound.org/people/eqavox/sounds/683950/) | eqavox | CC0 1.0 | 9:11 |
+| laundromat | `laundromat.ogg` | [Laundromat Ambience Rush Hour](https://freesound.org/people/CVLTIV8R/sounds/806930/) | CVLTIV8R | CC0 1.0 | 9:04 |
+| harbor-night | `harbor-night.ogg` | [HARBOR AT NIGHT AMBIENCE](https://freesound.org/people/Elenalostale/sounds/648656/) | Elenalostale | CC0 1.0 | 3:00 |
 
 ## Notes
 
@@ -52,3 +59,9 @@ record.
   chosen over a shorter literally-titled "daytime city street" clip (0:31)
   for the same reason `highway.ogg` favored duration over an exact title
   match — it loops far less noticeably.
+- `windy-day.ogg`: recorded without a windscreen, so a 90 Hz high-pass was
+  applied to tame low-frequency mic rumble.
+- `arcade.ogg`: a continuous drone of many machines and players was chosen
+  over shorter clips with distinct jingles, which would stand out on loop.
+- Files added from `windy-day` onward were also loudness-normalized to about
+  -26 LUFS (ffmpeg `loudnorm`) so they sit near the catalog's median level.
