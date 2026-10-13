@@ -63,5 +63,8 @@ record.
   applied to tame low-frequency mic rumble.
 - `arcade.ogg`: a continuous drone of many machines and players was chosen
   over shorter clips with distinct jingles, which would stand out on loop.
-- Files added from `windy-day` onward were also loudness-normalized to about
-  -26 LUFS (ffmpeg `loudnorm`) so they sit near the catalog's median level.
+- Loudness: every loop is normalized to about -26 LUFS (two-pass ffmpeg
+  `loudnorm`, linear mode, -2 dBTP ceiling) so switching soundscapes doesn't
+  need a volume change. The originals ranged from -14 to -54 LUFS.
+  `fireplace`, `rain`, `ocean-waves`, `train` and `thunderstorm` were already
+  within ~1 LU and were left untouched to avoid another lossy re-encode.
