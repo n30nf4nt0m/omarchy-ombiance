@@ -6,7 +6,8 @@ a rainy Tokyo night street, a fireplace, highway traffic, a nighttime
 forest, rain, a thunderstorm, a quiet library, a train journey, morning
 birdsong, crickets, snowfall, an airport terminal, a city street, wind chimes, a
 windy day, a subway station, an arcade, a babbling brook, a purring cat, a
-laundromat, and a harbor at night — for work, play, or sleep.
+laundromat, a harbor at night, a cat café, a space station, a bowling alley,
+underwater, a campsite at night, and a barbershop — for work, play, or sleep.
 
 ## Dependencies
 

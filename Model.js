@@ -26,7 +26,13 @@ var soundscapes = [
   { id: "brook", label: "Babbling Brook", icon: "🏞️", moods: ["work", "sleep"] },
   { id: "cat-purr", label: "Cat Purring", icon: "🐈", moods: ["sleep", "work"] },
   { id: "laundromat", label: "Laundromat", icon: "🧺", moods: ["work", "sleep"] },
-  { id: "harbor-night", label: "Night Harbor", icon: "⚓", moods: ["sleep", "play"] }
+  { id: "harbor-night", label: "Night Harbor", icon: "⚓", moods: ["sleep", "play"] },
+  { id: "cat-cafe", label: "Cat Café", icon: "🐱", moods: ["work", "play"] },
+  { id: "space-station", label: "Space Station", icon: "🛰️", moods: ["work", "sleep"] },
+  { id: "bowling-alley", label: "Bowling Alley", icon: "🎳", moods: ["play"] },
+  { id: "underwater", label: "Underwater", icon: "🫧", moods: ["sleep", "work"] },
+  { id: "campsite-night", label: "Campsite", icon: "🏕️", moods: ["sleep", "play"] },
+  { id: "barbershop", label: "Barbershop", icon: "💈", moods: ["work", "play"] }
 ]
 
 var moods = [

@@ -32,6 +32,12 @@ record.
 | cat-purr | `cat-purr.ogg` | [Cat Purring](https://freesound.org/people/eqavox/sounds/683950/) | eqavox | CC0 1.0 | 9:11 |
 | laundromat | `laundromat.ogg` | [Laundromat Ambience Rush Hour](https://freesound.org/people/CVLTIV8R/sounds/806930/) | CVLTIV8R | CC0 1.0 | 9:04 |
 | harbor-night | `harbor-night.ogg` | [HARBOR AT NIGHT AMBIENCE](https://freesound.org/people/Elenalostale/sounds/648656/) | Elenalostale | CC0 1.0 | 3:00 |
+| cat-cafe | `cat-cafe.ogg` | Mix of [Ambience Coffee Shop 1](https://freesound.org/people/JarredGibb/sounds/233280/) + [Cat Purring](https://freesound.org/people/eqavox/sounds/683950/) | JarredGibb, eqavox | CC0 1.0 | 3:11 |
+| space-station | `space-station.ogg` | [Space Station Drone](https://freesound.org/people/db3005/sounds/686237/) | db3005 | CC0 1.0 | 2:00 |
+| bowling-alley | `bowling-alley.ogg` | [Bowling Alley Ambience 01a.wav](https://freesound.org/people/dagray/sounds/667758/) | dagray | CC0 1.0 | 9:00 |
+| underwater | `underwater.ogg` | [Below the Sea — Underwater Soundscape, Korcula, Croatia](https://freesound.org/people/GirlWithSoundRecorder/sounds/773947/) | GirlWithSoundRecorder | CC0 1.0 | 6:44 |
+| campsite-night | `campsite-night.ogg` | [Ambience_Campsite_Night](https://freesound.org/people/LizzBitzz/sounds/766127/) | LizzBitzz | CC0 1.0 | 2:39 |
+| barbershop | `barbershop.ogg` | [barber shop ambience-india](https://freesound.org/people/dipinc/sounds/785107/) | dipinc | CC0 1.0 | 8:56 |
 
 ## Notes
 
@@ -63,6 +69,14 @@ record.
   applied to tame low-frequency mic rumble.
 - `arcade.ogg`: a continuous drone of many machines and players was chosen
   over shorter clips with distinct jingles, which would stand out on loop.
+- `cat-cafe.ogg`: no CC0 cat-café recording exists on Freesound (the one cat
+  ambience hit carried a no-redistribution note), so this is a mix of the
+  bundled `coffee-shop` and `cat-purr` loops — café murmur with a purring cat
+  4 dB under it, cut to the coffee-shop length so both seams line up.
+- `bowling-alley.ogg`: mono source (upmixed to stereo); trimmed from 14:27 to
+  the first 9:00 to keep the file in line with the rest of the catalog.
+- `campsite-night.ogg`: a very quiet recording (-56 LUFS), so it needed about
+  +30 dB to reach the catalog level; expect a little more hiss than most.
 - Loudness: every loop is normalized to about -26 LUFS (two-pass ffmpeg
   `loudnorm`, linear mode, -2 dBTP ceiling) so switching soundscapes doesn't
   need a volume change. The originals ranged from -14 to -54 LUFS.
